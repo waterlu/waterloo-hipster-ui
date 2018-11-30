@@ -3,7 +3,7 @@
 angular.module('app').controller('ProjectController', ['$scope', '$http', '$state', function($scope, $http, $state) {
 
     // 基本信息
-    $scope.groupId = 'com.pingan.test';
+    $scope.groupId = 'cn.lu.test';
     $scope.artifactId = 'demo';
     $scope.port = '8000';
     $scope.version = '1.0.0';
@@ -26,8 +26,8 @@ angular.module('app').controller('ProjectController', ['$scope', '$http', '$stat
     $scope.dbType = 'MySQL';
     $scope.dbIP = '127.0.0.1';
     $scope.dbPort = '3306';
-    $scope.dbName = 'peanut';
-    $scope.dbUsername = 'lu';
+    $scope.dbName = 'test';
+    $scope.dbUsername = 'test';
     $scope.dbPassword = '123';
 
     // 数据库表
@@ -43,7 +43,7 @@ angular.module('app').controller('ProjectController', ['$scope', '$http', '$stat
     $scope.javaDir = 'src/main/java';
     $scope.resourcesDir = 'src/main/resources';
     $scope.testDir = 'src/test/java';
-    $scope.basePackage = 'com.pingan.test';
+    $scope.basePackage = 'cn.lu.test';
     $scope.configPackage = 'config';
     $scope.controllerPackage = 'web';
     $scope.servicePackage = 'service';
