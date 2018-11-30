@@ -3,11 +3,11 @@
 angular.module('app').controller('ProjectController', ['$scope', '$http', '$state', function($scope, $http, $state) {
 
     // 基本信息
-    $scope.groupId = '';
-    $scope.artifactId = '';
-    $scope.port = '';
+    $scope.groupId = 'com.pingan.test';
+    $scope.artifactId = 'demo';
+    $scope.port = '8000';
     $scope.version = '1.0.0';
-    $scope.description = 'Demo project for Spring Cloud';
+    $scope.description = 'Demo project';
     $scope.javaVersion = '1.8';
     $scope.springBootVersion = '1.5.13.RELEASE';
     $scope.springCloudVersion = 'Dalston.SR4';
@@ -24,11 +24,11 @@ angular.module('app').controller('ProjectController', ['$scope', '$http', '$stat
 
     // 数据库连接
     $scope.dbType = 'MySQL';
-    $scope.dbIP = '192.168.75.159';
+    $scope.dbIP = '127.0.0.1';
     $scope.dbPort = '3306';
-    $scope.dbName = 'bookshop_user';
-    $scope.dbUsername = 'zj_admin';
-    $scope.dbPassword = '123456';
+    $scope.dbName = 'peanut';
+    $scope.dbUsername = 'lu';
+    $scope.dbPassword = '123';
 
     // 数据库表
     $scope.tables = [];
@@ -38,12 +38,12 @@ angular.module('app').controller('ProjectController', ['$scope', '$http', '$stat
     $scope.tableList = [];
 
     // 包信息
-    $scope.author = '';
-    $scope.projectDir = '';
+    $scope.author = 'lu';
+    $scope.projectDir = '/home/lu/workspace/test';
     $scope.javaDir = 'src/main/java';
     $scope.resourcesDir = 'src/main/resources';
     $scope.testDir = 'src/test/java';
-    $scope.basePackage = '';
+    $scope.basePackage = 'com.pingan.test';
     $scope.configPackage = 'config';
     $scope.controllerPackage = 'web';
     $scope.servicePackage = 'service';
@@ -59,10 +59,11 @@ angular.module('app').controller('ProjectController', ['$scope', '$http', '$stat
         "SubTable"
     ];
     $scope.primaryKeyFieldType = 'ID';
+    $scope.primaryKeyFieldName = '';
     $scope.keyTypeList = [
-        "ID"
+        "ID",
+        "UUID"
         // "NONE",
-        // "UUID"
     ];
     $scope.masterTableName = '';
     $scope.masterFieldName = '';
@@ -211,17 +212,33 @@ angular.module('app').controller('ProjectController', ['$scope', '$http', '$stat
         waterloo_web_starter.name = 'waterloo-web';
         waterloo_web_starter.groupId = 'cn.waterlu';
         waterloo_web_starter.artifactId = 'waterloo-starter-web';
-        waterloo_web_starter.version = '1.0.1';
+        waterloo_web_starter.version = '1.0.2';
 
         var waterloo_hipster = [];
         waterloo_hipster.selected = true;
         waterloo_hipster.name = 'waterloo-hipster';
         waterloo_hipster.groupId = 'cn.waterlu';
         waterloo_hipster.artifactId = 'waterloo-hipster';
-        waterloo_hipster.version = '1.0.1';
+        waterloo_hipster.version = '1.0.3';
+
+        var swagger2 = [];
+        swagger2.selected = true;
+        swagger2.name = 'swagger2';
+        swagger2.groupId = 'io.springfox';
+        swagger2.artifactId = 'springfox-swagger2';
+        swagger2.version = '2.9.2';
+
+        var swagger_ui = [];
+        swagger_ui.selected = true;
+        swagger_ui.name = 'swagger-ui';
+        swagger_ui.groupId = 'io.springfox';
+        swagger_ui.artifactId = 'springfox-swagger-ui';
+        swagger_ui.version = '2.9.2';
 
         $scope.dependencies.push(waterloo_hipster);
         $scope.dependencies.push(waterloo_web_starter);
+        $scope.dependencies.push(swagger2);
+        $scope.dependencies.push(swagger_ui);
     };
 
     $scope.initDefaultDependency();
@@ -329,6 +346,7 @@ angular.module('app').controller('ProjectController', ['$scope', '$http', '$stat
                             } else {
                                 console.log("Unknown primary key type = " + field.typeName);
                             }
+                            $scope.primaryKeyFieldName = field.columnName;
                         }
                     });
                 } else {
@@ -370,7 +388,7 @@ angular.module('app').controller('ProjectController', ['$scope', '$http', '$stat
             'order': null
         };
 
-        var primaryKeyFieldName = '';
+        var primaryKeyFieldName = $scope.primaryKeyFieldName;
         var keyList = new Array();
         angular.forEach ($scope.fields, function (field, index) {
             if (field.key) {
@@ -386,9 +404,9 @@ angular.module('app').controller('ProjectController', ['$scope', '$http', '$stat
             }
 
 
-            if (field.primaryKey) {
-                primaryKeyFieldName = field.columnName;
-            }
+            // if (field.primaryKey) {
+            //     primaryKeyFieldName = field.columnName;
+            // }
         });
 
         var orderByList = new Array();

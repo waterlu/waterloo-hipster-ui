@@ -109,16 +109,14 @@
                                     <div class="col-sm-5">
                                         <input type="text" class="form-control" id="basePackage" ng-model="basePackage"/>
                                     </div>
-                                    <div class="col-sm-4"></div>
+                                    <div class="col-sm-4">例如 com.pingan.peanut</div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="projectDir" class="col-sm-3 control-label text-danger">*项目目录</label>
+                                    <label for="projectDir" class="col-sm-3 control-label text-danger">*项目存储目录</label>
                                     <div class="col-sm-5">
                                         <input type="text" class="form-control" id="projectDir" ng-model="projectDir"/>
                                     </div>
-                                    <div class="col-sm-4">
-                                        例如 c:/tmp/service-demo
-                                    </div>
+                                    <div class="col-sm-4">例如 /home/user/workspace/peanut</div>
                                 </div>
                             </div>
                         </div>
@@ -302,6 +300,13 @@
                                                                     <select id="primaryKeyFieldType" ng-model="primaryKeyFieldType" class="form-control" ng-options="act for act in keyTypeList"></select>
                                                                 </div>
                                                                 <div class="col-sm-4">目前只支持BIGINT自增主键。</div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="primaryKeyFieldName" class="col-sm-2 control-label">主键字段</label>
+                                                                <div class="col-sm-6">
+                                                                    <input id="primaryKeyFieldName" ng-model="primaryKeyFieldName" class="form-control"></input>
+                                                                </div>
+                                                                <div class="col-sm-4"></div>
                                                             </div>
                                                             <!--<div class="form-group">-->
                                                                 <!--<label for="masterTableName" class="col-sm-2 control-label">主表名称</label>-->
