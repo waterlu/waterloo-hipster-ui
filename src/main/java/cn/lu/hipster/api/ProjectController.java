@@ -28,8 +28,12 @@ import java.util.Map;
 public class ProjectController extends BaseController {
 
     @Autowired
-    @Qualifier("springBootGenerator")
-    private ProjectGenerator springBootGenerator;
+    @Qualifier("springBootProjectGenerator")
+    private ProjectGenerator springBootProjectGenerator;
+
+    @Autowired
+    @Qualifier("springCloudProjectGenerator")
+    private ProjectGenerator springCloudProjectGenerator;
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public ResponseResult<SimpleResponseData> generate(@RequestBody @Validated GeneratorParam generatorParam) throws Exception {
@@ -43,7 +47,13 @@ public class ProjectController extends BaseController {
         String projectType = generatorParam.getProjectInfo().getProjectType();
         if (ProjectType.PROJECT_TYPE_BOOT.equalsIgnoreCase(projectType)) {
             // 生成SpringBoot项目
-            String message = springBootGenerator.generateProject(generatorParam);
+            String message = springBootProjectGenerator.generateProject(generatorParam);
+            SimpleResponseData responseData = new SimpleResponseData(message);
+            ResponseResult<SimpleResponseData> responseResult = new ResponseResult(responseData);
+            return responseResult;
+        } else if (ProjectType.PROJECT_TYPE_CLOUD.equalsIgnoreCase(projectType)) {
+            // 生成SpringCloud项目
+            String message = springCloudProjectGenerator.generateProject(generatorParam);
             SimpleResponseData responseData = new SimpleResponseData(message);
             ResponseResult<SimpleResponseData> responseResult = new ResponseResult(responseData);
             return responseResult;

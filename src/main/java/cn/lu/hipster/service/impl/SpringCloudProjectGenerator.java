@@ -1,8 +1,8 @@
 package cn.lu.hipster.service.impl;
 
 import cn.lu.hipster.api.MybatisGenerator;
-import cn.lu.hipster.api.SpringBootGenerator;
-import cn.lu.hipster.api.SpringMVCGenerator;
+import cn.lu.hipster.api.SpringCloudGenerator;
+import cn.lu.hipster.api.SpringCloudMVCGenerator;
 import cn.lu.hipster.model.GeneratorParam;
 import cn.lu.hipster.service.ProjectGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,19 +12,19 @@ import org.springframework.stereotype.Component;
  * 生成SpringBoot项目
  *
  * @author lutiehua
- * @date 2017/11/10
+ * @date 2018-12-03
  */
-@Component("springBootProjectGenerator")
-public class SpringBootProjectGenerator implements ProjectGenerator {
+@Component("springCloudProjectGenerator")
+public class SpringCloudProjectGenerator implements ProjectGenerator {
 
     @Autowired
-    private SpringBootGenerator projectGenerator;
+    private SpringCloudGenerator projectGenerator;
 
     @Autowired
     private MybatisGenerator mybatisGenerator;
 
     @Autowired
-    private SpringMVCGenerator springMVCGenerator;
+    private SpringCloudMVCGenerator springMVCGenerator;
 
     @Override
     public String generateProject(GeneratorParam generatorParam) throws Exception {

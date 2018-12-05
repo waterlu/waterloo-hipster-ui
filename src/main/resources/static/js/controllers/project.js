@@ -13,10 +13,10 @@ angular.module('app').controller('ProjectController', ['$scope', '$http', '$stat
     $scope.springCloudVersion = 'Dalston.SR4';
 
     // 项目类型
-    $scope.projectType = 'Spring Boot';
+    $scope.projectType = 'SpringBoot';
     $scope.projectTypeList = [
-        "Spring Boot"
-        // "Spring Cloud"
+        "SpringBoot",
+        "SpringCloud"
     ];
 
     // 项目依赖
@@ -43,7 +43,7 @@ angular.module('app').controller('ProjectController', ['$scope', '$http', '$stat
     $scope.javaDir = 'src/main/java';
     $scope.resourcesDir = 'src/main/resources';
     $scope.testDir = 'src/test/java';
-    $scope.basePackage = 'cn.lu.test';
+    $scope.basePackage = 'cn.lu.test.demo';
     $scope.configPackage = 'config';
     $scope.controllerPackage = 'web';
     $scope.servicePackage = 'service';
@@ -51,6 +51,7 @@ angular.module('app').controller('ProjectController', ['$scope', '$http', '$stat
     $scope.entityPackage = 'entity';
     $scope.dtoPackage = 'vo';
     $scope.voPackage = 'vo';
+    $scope.facadePackage = 'facade';
 
     // 表类型/主键类型/主表名称/连接字段名称
     $scope.tableType = 'Single';
@@ -147,6 +148,7 @@ angular.module('app').controller('ProjectController', ['$scope', '$http', '$stat
             'entityPackage': null,
             'dtoPackage': null,
             'voPackage': null,
+            'facadePackage': null,
             'author': null,
             'projectPath': null,
             'javaPath': null,
@@ -180,6 +182,7 @@ angular.module('app').controller('ProjectController', ['$scope', '$http', '$stat
         packageInfo.entityPackage = $scope.entityPackage;
         packageInfo.dtoPackage = $scope.dtoPackage;
         packageInfo.voPackage = $scope.voPackage;
+        packageInfo.facadePackage = $scope.facadePackage;
         packageInfo.author = $scope.author;
         packageInfo.projectPath =$scope.projectDir;
         packageInfo.javaPath =$scope.javaDir;
@@ -212,14 +215,14 @@ angular.module('app').controller('ProjectController', ['$scope', '$http', '$stat
         waterloo_web_starter.name = 'waterloo-web';
         waterloo_web_starter.groupId = 'cn.waterlu';
         waterloo_web_starter.artifactId = 'waterloo-starter-web';
-        waterloo_web_starter.version = '1.0.2';
+        waterloo_web_starter.version = '1.0.5';
 
         var waterloo_hipster = [];
         waterloo_hipster.selected = true;
         waterloo_hipster.name = 'waterloo-hipster';
         waterloo_hipster.groupId = 'cn.waterlu';
         waterloo_hipster.artifactId = 'waterloo-hipster';
-        waterloo_hipster.version = '1.0.3';
+        waterloo_hipster.version = '1.0.5';
 
         var swagger2 = [];
         swagger2.selected = true;
@@ -432,6 +435,7 @@ angular.module('app').controller('ProjectController', ['$scope', '$http', '$stat
         tableInfo.order = orderByList;
 
         $scope.tableList.push(tableInfo);
+        window.alert('成功');
     };
 
     // 移除待生成的数据库表

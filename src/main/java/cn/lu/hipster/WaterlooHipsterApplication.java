@@ -4,7 +4,7 @@ import cn.lu.web.annotation.EnableWaterlooWeb;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {"cn.lu.hipster"})
 @EnableWaterlooWeb
 public class WaterlooHipsterApplication {
 

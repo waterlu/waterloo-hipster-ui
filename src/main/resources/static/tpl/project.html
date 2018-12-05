@@ -21,7 +21,7 @@
                         <div id="collapse_project_info" class="panel-collapse collapse in">
                             <div class="panel-body">
                                 <div class="form-group">
-                                    <label for="projectType" class="col-sm-3 control-label">projectType</label>
+                                    <label for="projectType" class="col-sm-3 control-label text-danger">*projectType</label>
                                     <div class="col-sm-5">
                                         <select id="projectType" ng-model="projectType" class="form-control" ng-options="act for act in projectTypeList" />
                                     </div>
@@ -117,6 +117,48 @@
                                         <input type="text" class="form-control" id="projectDir" ng-model="projectDir"/>
                                     </div>
                                     <div class="col-sm-4">例如 /home/user/workspace/peanut</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="controllerPackage" class="col-sm-3 control-label text-danger">Controller类目录</label>
+                                    <div class="col-sm-5">
+                                        <input type="text" class="form-control" id="controllerPackage" ng-model="controllerPackage"/>
+                                    </div>
+                                    <div class="col-sm-4"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="entityPackage" class="col-sm-3 control-label text-danger">实体类目录</label>
+                                    <div class="col-sm-5">
+                                        <input type="text" class="form-control" id="entityPackage" ng-model="entityPackage"/>
+                                    </div>
+                                    <div class="col-sm-4"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="dtoPackage" class="col-sm-3 control-label text-danger">DTO类目录</label>
+                                    <div class="col-sm-5">
+                                        <input type="text" class="form-control" id="dtoPackage" ng-model="dtoPackage"/>
+                                    </div>
+                                    <div class="col-sm-4">入参</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="voPackage" class="col-sm-3 control-label text-danger">VO类目录</label>
+                                    <div class="col-sm-5">
+                                        <input type="text" class="form-control" id="voPackage" ng-model="voPackage"/>
+                                    </div>
+                                    <div class="col-sm-4">返回值</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="daoPackage" class="col-sm-3 control-label text-danger">DAO类目录</label>
+                                    <div class="col-sm-5">
+                                        <input type="text" class="form-control" id="daoPackage" ng-model="daoPackage"/>
+                                    </div>
+                                    <div class="col-sm-4">Mapper类</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="facadePackage" class="col-sm-3 control-label text-danger">接口类目录</label>
+                                    <div class="col-sm-5">
+                                        <input type="text" class="form-control" id="facadePackage" ng-model="facadePackage"/>
+                                    </div>
+                                    <div class="col-sm-4">SpringCloud Service Provider</div>
                                 </div>
                             </div>
                         </div>
