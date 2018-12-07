@@ -4,7 +4,6 @@ import cn.lu.hipster.model.DBField;
 import cn.lu.hipster.model.DBTable;
 import cn.lu.hipster.model.DatabaseInfo;
 import cn.lu.web.mvc.ResponseData;
-import cn.lu.web.mvc.ResponseResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Connection;
@@ -40,27 +39,24 @@ public class DatabaseController {
     private final static String UNSIGNED_TINYINT = "TINYINT UNSIGNED";
 
     @RequestMapping(value = "/connect", method = RequestMethod.POST)
-    public ResponseResult connect(@RequestBody DatabaseInfo databaseInfo) throws Exception {
+    public ResponseData<String> connect(@RequestBody DatabaseInfo databaseInfo) throws Exception {
         String schema = getConnection(databaseInfo).getSchema();
         ResponseData<String> responseData = new ResponseData<>(schema);
-        ResponseResult responseResult = new ResponseResult(responseData);
-        return responseResult;
+        return responseData;
     }
 
     @RequestMapping(value = "/tables", method = RequestMethod.POST)
-    public ResponseResult getTables(@RequestBody DatabaseInfo databaseInfo) throws Exception {
+    public ResponseData getTables(@RequestBody DatabaseInfo databaseInfo) throws Exception {
         List<DBTable> tableList = getTableNames(databaseInfo);
         ResponseData responseData = new ResponseData(tableList);
-        ResponseResult responseResult = new ResponseResult(responseData);
-        return responseResult;
+        return responseData;
     }
 
     @RequestMapping(value = "/tables/{tableName}", method = RequestMethod.POST)
-    public ResponseResult getTableColumns(@PathVariable String tableName, @RequestBody DatabaseInfo databaseInfo) throws Exception {
+    public ResponseData getTableColumns(@PathVariable String tableName, @RequestBody DatabaseInfo databaseInfo) throws Exception {
         List<DBField> fieldList = getTableColumns(databaseInfo, tableName);
         ResponseData responseData = new ResponseData(fieldList);
-        ResponseResult responseResult = new ResponseResult(responseData);
-        return responseResult;
+        return responseData;
     }
 
     private List<DBTable> getTableNames(DatabaseInfo databaseInfo) throws Exception {
